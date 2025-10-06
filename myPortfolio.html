@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dharsan M.V | Frontend Developer Portfolio</title>
+  
+  <style>
+    /* ===== General Styles ===== */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: #0f172a;
+      color: #e2e8f0;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+    a { color: #8b5cf6; text-decoration: none; transition: color 0.3s; }
+    a:hover { color: #c084fc; }
+
+    h1, h2, h3 { margin-top: 0; color: #ffffff; }
+
+    /* ===== Header ===== */
+    header {
+      background: linear-gradient(135deg, #4f46e5, #7c3aed);
+      color: white;
+      text-align: center;
+      padding: 50px 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+    header h1 { font-size: 2.5rem; margin-bottom: 10px; }
+    header p { font-size: 1.1rem; margin-bottom: 20px; }
+    nav a { color: #e0e7ff; margin: 0 15px; font-weight: 500; }
+    nav a:hover { color: #c084fc; text-decoration: underline; }
+
+    /* ===== Tool Logos ===== */
+    .tool-container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin: 30px 0;
+      flex-wrap: wrap;
+    }
+    .tool-container img {
+      width: 80px;
+      height: 80px;
+      filter: brightness(0) invert(1);
+      transition: transform 0.3s;
+    }
+    .tool-container img:hover {
+      transform: scale(1.2);
+    }
+
+    /* ===== Sections ===== */
+    section {
+      max-width: 1000px;
+      margin: 40px auto;
+      background: #1e293b;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.4);
+    }
+    h2 {
+      color: #a78bfa;
+      border-left: 5px solid #8b5cf6;
+      padding-left: 10px;
+      margin-bottom: 15px;
+    }
+    p { color: #cbd5e1; font-size: 1.05rem; }
+
+    /* ===== Skills ===== */
+    .skills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+    .skills span {
+      background: #312e81;
+      color: #f1f5f9;
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+    .skills span:hover { background: #4338ca; }
+
+    /* ===== Projects ===== */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .project-card {
+      background: #273449;
+      border-radius: 10px;
+      padding: 20px;
+      border: 1px solid #334155;
+      transition: 0.3s;
+      position: relative;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 20px rgba(139, 92, 246, 0.3);
+    }
+    .project-card h3 { color: #a78bfa; margin-bottom: 10px; }
+    .project-card p { color: #cbd5e1; transition: all 0.4s ease; }
+    .project-card a {
+      display: inline-block;
+      margin-top: 10px;
+      color: #8b5cf6;
+      font-weight: 500;
+    }
+    .project-card a:hover { color: #c084fc; }
+
+    /* ===== See More / See Less ===== */
+    .collapsed {
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+    }
+    .toggle-btn {
+      background: none;
+      border: none;
+      color: #38bdf8;
+      cursor: pointer;
+      font-size: 14px;
+      margin-top: 8px;
+      padding: 0;
+    }
+    .toggle-btn:hover {
+      text-decoration: underline;
+    }
+
+    /* ===== Experience ===== */
+    .experience-item {
+      background: #273449;
+      margin-bottom: 15px;
+      padding: 15px;
+      border-radius: 10px;
+      border: 1px solid #334155;
+    }
+    .experience-item h3 { color: #a78bfa; margin-bottom: 5px; }
+    .experience-item span { font-size: 0.9rem; color: #94a3b8; }
+    .experience-item p { margin: 5px 0 0; }
+
+    /* ===== Education ===== */
+    .education-item {
+      background: #273449;
+      margin-bottom: 15px;
+      padding: 15px;
+      border-radius: 10px;
+      border: 1px solid #334155;
+    }
+
+    /* ===== Testimonials ===== */
+    .testimonial {
+      background: #273449;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 10px;
+      border: 1px solid #334155;
+      font-style: italic;
+    }
+
+    /* ===== Contact ===== */
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 6px;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+    }
+    .contact-form button {
+      background: #8b5cf6;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s;
+    }
+    .contact-form button:hover { background: #c084fc; }
+
+    /* ===== Footer ===== */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #1e293b;
+      font-size: 14px;
+      color: #94a3b8;
+    }
+
+    /* ===== Responsive ===== */
+    @media(max-width:600px){
+      header h1 { font-size:2rem; }
+      .tool-container img { width:60px; height:60px; }
+    }
+	.social-links {
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+	margin-bottom: 10px;
+	}
+
+	.social-links img {
+	width: 30px;
+	height: 30px;
+	filter: brightness(0) invert(1);
+	transition: transform 0.3s, filter 0.3s;
+	}
+
+	.social-links img:hover {
+	transform: scale(1.2);
+	filter: brightness(0) saturate(100%) invert(62%) sepia(93%) saturate(734%) hue-rotate(210deg) brightness(103%) contrast(97%);
+	}
+
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>Dharsan M.V</h1>
+    <p>Frontend Web Developer | WordPress | Business Analyst</p>
+    <nav>
+      <a href="#about">About</a>      
+      <a href="#projects">Projects</a>
+	  <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Tool Logos -->
+  <div class="tool-container">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg" alt="WordPress">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-plain.svg" alt="HTML">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-plain.svg" alt="CSS">    
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-plain.svg" alt="JS">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-plain.svg" alt="Jira">
+  </div>
+
+  <!-- About -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p>I’m a passionate Frontend Developer Intern, currently working as a WordPress Developer, creating responsive, user-friendly websites. I enjoy turning ideas into elegant and functional digital experiences using WordPress, HTML, CSS, and JavaScript.</p>
+    <p>I’ve completed internships in Business Analysis and Data Analytics, gaining experience in BRD/SRS, SQL, and Power BI. I am now expanding my skills with React and advanced UI/UX design.</p>
+    <p>My goal is to craft visually appealing and functional websites while continuously learning and improving my skills to adapt to the evolving web development industry.</p>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills">
+      <span>HTML</span>
+      <span>CSS</span>
+      <span>WordPress</span>
+      <span>Git & GitHub</span>
+      <span>Jira & Confluence</span>
+      <span>SQL</span>
+      <span>Power BI</span>
+      <span>SEO Optimization</span>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <h2>Featured Projects</h2>
+    <div class="projects">
+      <div class="project-card">
+        <h3>Machine Learning for Neurofibromatosis Classification</h3>
+        <p class="collapsed">As part of our college final year project, we developed a machine learning-based model to classify neurofibromatosis tumors using medical imaging data. We utilized deep learning feature extraction models such as DenseNet21 and ResNet, and applied machine learning algorithms like SVM, Random Forest, Decision Tree, and other ensemble methods for classification. This hybrid approach enhanced the model’s accuracy and supported early tumor detection and diagnosis, contributing to improved clinical decision-making.</p>
+        <button class="toggle-btn">See More</button>
+        <a href="#">View Project</a>
+      </div>
+
+      <div class="project-card">
+		<h3>Personal Portfolio Website</h3>
+		<p class="collapsed">
+		Designed and developed my personal portfolio website using HTML and CSS to showcase my skills, projects, and experience. 
+		The website is fully responsive, ensuring an optimal viewing experience on desktops, tablets, and mobile devices. 
+		Implemented modern UI/UX design principles, clean layouts, and smooth navigation to provide an engaging user experience. 
+		This project helped me strengthen my front-end development skills, practice responsive design, and create a professional platform to present my work.
+		</p>
+		<button class="toggle-btn">See More</button>
+		<a href="#">View Project</a>
+	  </div>
+
+	  <div class="project-card">
+		<h3>Movie Recommendation System</h3>
+		<p class="collapsed">
+		The Movie Recommendation System aims to simplify the process of choosing movies by providing personalized suggestions based on user preferences and past ratings. 
+		The project focuses on building a model that understands what kind of movies users enjoy and recommends similar ones accordingly. 
+		The process involves collecting a movie dataset, performing data cleaning, and conducting Exploratory Data Analysis (EDA) to uncover patterns and relationships. 
+		Various machine learning algorithms, including collaborative filtering and content-based approaches, are applied to predict and recommend movies tailored to each user’s taste. 
+		This system enhances user experience by saving time and delivering relevant movie options efficiently.
+		</p>
+		<button class="toggle-btn">See More</button>
+		<a href="#">View Project</a>
+	  </div>
+
+
+      <div class="project-card">
+        <h3>WordPress Company Site</h3>
+        <p class="collapsed">Customized a WordPress business website (Jun 2025) with SEO optimization and modern design, enhancing engagement and user experience.</p>
+        <button class="toggle-btn">See More</button>
+        <a href="#">View Project</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience">
+    <h2>Experience</h2>
+    <div class="experience-item">
+      <h3>Frontend Developer Intern | WordPress Developer</h3>
+      <span>October 2025 - Present</span>
+      <p>I am currently working as a WordPress Developer Trainee, gaining hands-on experience in maintaining and enhancing existing projects. My work involves building responsive websites, creating intuitive UI/UX designs, and ensuring cross-browser compatibility. I contribute to the development and customization of WordPress sites while collaborating with the team to deliver seamless user experiences. This role has helped me strengthen my technical skills and understanding of real-world project workflows.</p>
+    </div>
+    <div class="experience-item">
+      <h3>Business Analyst Intern | Ezio Solutions Pvt Ltd</h3>
+      <span>August 2025 - September 2024 (2 Months)</span>
+      <p>During my internship as a Business Analyst, I worked on gathering requirements, preparing BRD and SRS documents, and analyzing business processes. I collaborated closely with the development team to ensure that business needs were effectively translated into actionable tasks. I also worked with stakeholders to understand their requirements and created user stories to guide project execution. This experience gave me hands-on exposure to tools like Jira, Confluence, MS Excel, SQL, and UML diagrams, while strengthening my understanding of Agile methodology and the software development life cycle (SDLC). It was a great opportunity to enhance my problem-solving, analytical, and communication skills.</p>
+    </div>
+	<div class="experience-item">
+		<h3>Software Programmer Trainee | Zoho</h3>
+		<span>February 2025 - March 2025</span>
+		<p>I underwent a one-month training program as an Incubation Trainee at Zoho, where I enhanced my skills in communication, logical and critical thinking, and problem-solving. The program provided hands-on exposure to Java programming, helping me strengthen my technical foundation. I also gained valuable experience in teamwork and collaboration, working closely with peers to achieve project goals. This experience significantly improved my technical proficiency and interpersonal abilities, preparing me to adapt and contribute efficiently in a professional environment.</p>
+	</div>
+  </section>
+  
+  <!-- Education -->
+  <section id="education">
+    <h2>Education & Certifications</h2>
+    <div class="education-item">
+      <h3>Data Analyst Course</h3>
+      <span>May 2024 - Jul 2024 (3 Months)</span>
+	  <p>Data Analyst Skills and Learning Experience:</p>
+      <p>Completed a comprehensive Data Analyst course at Oxi.ai Academy, where I gained hands-on experience in SQL, Power BI, data visualization, and data analysis techniques to extract meaningful insights from complex datasets. Developed proficiency in Python programming and its key libraries such as Pandas, NumPy, Matplotlib, and Seaborn for data manipulation, statistical analysis, and visual storytelling.</p>
+	  <p>Acquired practical knowledge of machine learning fundamentals, enabling the application of predictive analytics and basic model building to solve business problems. Skilled in creating interactive dashboards, reports, and data-driven visualizations that support strategic decision-making. Experienced in combining technical tools and analytical thinking to identify patterns, trends, and actionable insights from structured and unstructured data.</p>
+    </div>
+    <div class="education-item">
+  <h3>Kongu Engineering College</h3>
+  <span>Jul 2022 - May 2025</span>
+  <p>
+    BSc, Computer Systems and Design | Grade: 7.53 CGPA<br>
+    Activities and Societies: Participated in Hackathons, Coding Challenges, and Case Study Competitions.<br>
+    Gained strong academic and practical exposure in Computer Systems, Software Design, and Business Analysis. Actively involved in technical clubs, hackathons, and cultural activities which helped build teamwork, leadership, and problem-solving skills.<br>
+    Skills: Communication · Software Documentation · Analytical Thinking · Easily Adaptable · Statistical Analysis (basic)
+  </p>
+</div>
+
+<div class="education-item">
+  <h3>Royal International School</h3>
+  <span>Feb 2021 - Feb 2022</span>
+  <p>
+    Higher Secondary Education, Business/Commerce, General | Grade: 12<br>
+    Activities and Societies: Commerce Club (Accountancy & Business Studies group activities), Economics Quiz Team, Participated in Business Plan & Case Study Presentations, Volunteered in School Cultural & Annual Day Events.<br>
+    Completed Higher Secondary Education in Commerce stream with focus on Accountancy, Business Studies, and Economics. Built a strong foundation in analytical thinking, financial understanding, and business concepts, which supports my career as a Business Analyst.
+  </p>
+</div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials">
+    <h2>Testimonials</h2>
+    <div class="testimonial">"Dharsan is a highly dedicated developer. His work on the WordPress site was impressive and timely." – Mentor</div>
+    <div class="testimonial">"Creative and detail-oriented, Dharsan turns ideas into functional, beautiful websites." – Colleague</div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <div class="contact">
+      <p><strong>Email:</strong> <a href="mailto:dharsanmohanraj2k@gmail.com">dharsanmohanraj2k@gmail.com</a></p>
+      <p><strong>Location:</strong> India</p>
+	  
+	  <form class="contact-form">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+  <!-- Resume Section -->
+		<p>
+		<strong>Resume:</strong> 
+		<a href="path-to-your-resume.pdf" target="_blank" download>View / Download Resume</a>
+		</p>
+	</div>
+  </section>
+
+<!-- Footer -->
+<footer>
+  <div class="social-links" style="margin-bottom: 10px;">
+    <a href="https://www.linkedin.com/in/dharsan-m-v-0ba6a926b/" target="_blank" title="LinkedIn">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" style="width:30px; margin-right:10px;">
+    </a>
+    <a href="https://github.com/Dharsanmv2004" target="_blank" title="GitHub">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" style="width:30px; margin-right:10px;">
+    </a>
+    <a href="https://www.instagram.com/" target="_blank" title="Instagram">
+  <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/instagram.svg" 
+       alt="Instagram" style="width:30px; margin-right:10px;">
+</a>
+    <a href="https://twitter.com/" target="_blank" title="Twitter">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/twitter/twitter-original.svg" alt="Twitter" style="width:30px;">
+    </a>
+  </div>
+
+  <p>© 2025 Dharsan M.V | Designed & Developed using HTML & CSS</p>
+</footer>
+
+
+
+
+  <!-- JS for See More / See Less -->
+  <script>
+    document.querySelectorAll(".toggle-btn").forEach(button => {
+      button.addEventListener("click", () => {
+        const paragraph = button.previousElementSibling;
+        paragraph.classList.toggle("collapsed");
+        button.textContent = paragraph.classList.contains("collapsed") ? "See More" : "See Less";
+      });
+    });
+  </script>
+</body>
+</html>
