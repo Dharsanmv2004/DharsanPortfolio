@@ -22,9 +22,9 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
  
       - name: Build Image
-        run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/portfolio:latest .
+        run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/dharsanportfolio:latest .
       - name: Push Image
-        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/portfolio:latest
+        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/dharsanportfolio:latest
  
       - name: Deploy to EC2 via SSH
         uses: appleboy/ssh-action@v1.0.3
@@ -33,7 +33,7 @@ jobs:
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            cd portfolio
-            sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/portfolio:latest
+            cd dharsan
+            sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/dharsanportfolio:latest
             sudo docker-compose down
             sudo docker-compose -f docker-compose.yaml up -d
